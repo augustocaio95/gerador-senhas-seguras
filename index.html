@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var key = "gerador-senhas-theme";
+        var t = localStorage.getItem(key);
+        if (t === "light" || t === "dark") {
+          document.documentElement.setAttribute("data-theme", t);
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerador de Senhas Seguras</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <button
+      type="button"
+      id="themeToggle"
+      class="theme-toggle"
+      aria-pressed="true"
+      title="Alternar tema claro ou escuro"
+    >
+      <span class="theme-toggle__label" aria-hidden="true">Claro</span>
+      <span class="visually-hidden">Alternar para tema claro</span>
+    </button>
     <main class="container">
       <section class="card">
         <header class="card-header">

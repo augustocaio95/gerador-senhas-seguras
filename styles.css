@@ -1,6 +1,7 @@
-:root {
+/* Tema escuro (padrão): cinza e preto como já definido */
+html[data-theme="dark"] {
   color-scheme: dark;
-  --black: #0a0a0b;
+  --page-bg: #0a0a0b;
   --bg-deep: #121214;
   --bg-mid: #1a1a1d;
   --card: #1c1c20;
@@ -15,10 +16,119 @@
   --accent-pressed: #a1a1aa;
   --shadow: rgba(0, 0, 0, 0.45);
   --glow: rgba(255, 255, 255, 0.04);
+  --bg-radial-1: #2a2a30;
+  --bg-radial-2: #1f1f24;
+  --card-shine-1: rgba(255, 255, 255, 0.12);
+  --card-shine-2: rgba(255, 255, 255, 0.04);
+  --option-row-bg: rgba(0, 0, 0, 0.2);
+  --option-row-hover-bg: rgba(255, 255, 255, 0.03);
+  --range-track: var(--border-subtle);
+  --range-thumb-mid: #9ca3af;
+  --result-input-bg: var(--page-bg);
+  --btn-bg: var(--card-elevated);
+  --btn-hover-bg: #2c2c32;
+  --btn-hover-border: #3f3f47;
+  --primary-start: #3a3a42;
+  --primary-end: #2a2a30;
+  --primary-hover-start: #484851;
+  --primary-hover-end: #35353c;
+  --primary-hover-border: #52525c;
+  --primary-active-start: #2a2a30;
+  --primary-active-end: #222228;
+  --primary-text: var(--accent-hover);
+  --primary-text-hover: #fafafa;
+}
+
+/* Tema claro: cinzas suaves, bom contraste */
+html[data-theme="light"] {
+  color-scheme: light;
+  --page-bg: #ececee;
+  --bg-deep: #f4f4f6;
+  --bg-mid: #e4e4e8;
+  --card: #ffffff;
+  --card-elevated: #f8f8fa;
+  --text: #18181b;
+  --text-soft: #3f3f46;
+  --muted: #71717a;
+  --border: #d4d4d8;
+  --border-subtle: #e4e4e7;
+  --accent: #3f3f46;
+  --accent-hover: #18181b;
+  --accent-pressed: #52525b;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --glow: rgba(255, 255, 255, 0.8);
+  --bg-radial-1: #d4d4d8;
+  --bg-radial-2: #e4e4e7;
+  --card-shine-1: rgba(255, 255, 255, 0.9);
+  --card-shine-2: rgba(0, 0, 0, 0.04);
+  --option-row-bg: rgba(0, 0, 0, 0.04);
+  --option-row-hover-bg: rgba(0, 0, 0, 0.06);
+  --range-track: #d4d4d8;
+  --range-thumb-mid: #71717a;
+  --result-input-bg: #f4f4f5;
+  --btn-bg: var(--card-elevated);
+  --btn-hover-bg: #ebebef;
+  --btn-hover-border: #a1a1aa;
+  --primary-start: #52525b;
+  --primary-end: #3f3f46;
+  --primary-hover-start: #3f3f46;
+  --primary-hover-end: #27272a;
+  --primary-hover-border: #3f3f46;
+  --primary-active-start: #3f3f46;
+  --primary-active-end: #27272a;
+  --primary-text: #fafafa;
+  --primary-text-hover: #ffffff;
 }
 
 * {
   box-sizing: border-box;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.5rem;
+  padding: 0.55rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px var(--shadow);
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--btn-hover-bg);
+  border-color: var(--btn-hover-border);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 body {
@@ -26,11 +136,11 @@ body {
   min-height: 100vh;
   font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
   color: var(--text);
-  background-color: var(--black);
+  background-color: var(--page-bg);
   background-image:
-    radial-gradient(ellipse 120% 80% at 50% -20%, #2a2a30 0%, transparent 55%),
-    radial-gradient(ellipse 80% 50% at 100% 100%, #1f1f24 0%, transparent 45%),
-    linear-gradient(180deg, var(--bg-deep) 0%, var(--black) 100%);
+    radial-gradient(ellipse 120% 80% at 50% -20%, var(--bg-radial-1) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 100% 100%, var(--bg-radial-2) 0%, transparent 45%),
+    linear-gradient(180deg, var(--bg-deep) 0%, var(--page-bg) 100%);
   background-attachment: fixed;
   letter-spacing: 0.01em;
 }
@@ -62,10 +172,10 @@ body {
   padding: 1px;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
+    var(--card-shine-1) 0%,
     transparent 40%,
     transparent 60%,
-    rgba(255, 255, 255, 0.04) 100%
+    var(--card-shine-2) 100%
   );
   mask:
     linear-gradient(#fff 0 0) content-box,
@@ -113,7 +223,7 @@ input[type="range"] {
   height: 6px;
   border-radius: 999px;
   appearance: none;
-  background: var(--border-subtle);
+  background: var(--range-track);
   outline: none;
 }
 
@@ -122,7 +232,7 @@ input[type="range"]::-webkit-slider-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: linear-gradient(180deg, var(--accent) 0%, #9ca3af 100%);
+  background: linear-gradient(180deg, var(--accent) 0%, var(--range-thumb-mid) 100%);
   border: 2px solid var(--card);
   box-shadow: 0 2px 8px var(--shadow);
   cursor: pointer;
@@ -132,7 +242,7 @@ input[type="range"]::-moz-range-thumb {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: linear-gradient(180deg, var(--accent) 0%, #9ca3af 100%);
+  background: linear-gradient(180deg, var(--accent) 0%, var(--range-thumb-mid) 100%);
   border: 2px solid var(--card);
   box-shadow: 0 2px 8px var(--shadow);
   cursor: pointer;
@@ -152,14 +262,14 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 10px;
   font-size: 0.9rem;
   color: var(--text-soft);
-  background: rgba(0, 0, 0, 0.2);
+  background: var(--option-row-bg);
   border: 1px solid transparent;
   cursor: pointer;
   transition: border-color 0.15s ease, background 0.15s ease;
 }
 
 .options label:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--option-row-hover-bg);
   border-color: var(--border);
 }
 
@@ -178,7 +288,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .result input,
-button {
+button:not(.theme-toggle) {
   border-radius: 10px;
   border: 1px solid var(--border);
   padding: 0.75rem 0.85rem;
@@ -187,7 +297,7 @@ button {
 }
 
 .result input {
-  background: var(--black);
+  background: var(--result-input-bg);
   color: var(--text);
   font-family: ui-monospace, "Cascadia Code", "Consolas", monospace;
   letter-spacing: 0.04em;
@@ -199,24 +309,24 @@ button {
 }
 
 .result input:focus-visible,
-button:focus-visible {
+button:not(.theme-toggle):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-button {
+button:not(.theme-toggle) {
   cursor: pointer;
   color: var(--text);
-  background: var(--card-elevated);
+  background: var(--btn-bg);
   font-weight: 500;
 }
 
-button:hover {
-  background: #2c2c32;
-  border-color: #3f3f47;
+button:not(.theme-toggle):hover {
+  background: var(--btn-hover-bg);
+  border-color: var(--btn-hover-border);
 }
 
-button:active {
+button:not(.theme-toggle):active {
   transform: translateY(1px);
 }
 
@@ -224,21 +334,29 @@ button:active {
   width: 100%;
   margin-top: 0.15rem;
   border-color: var(--border);
-  background: linear-gradient(180deg, #3a3a42 0%, #2a2a30 100%);
-  color: var(--accent-hover);
+  background: linear-gradient(180deg, var(--primary-start) 0%, var(--primary-end) 100%);
+  color: var(--primary-text);
   font-weight: 600;
   letter-spacing: 0.02em;
   box-shadow: 0 4px 14px var(--shadow);
 }
 
 .primary:hover {
-  background: linear-gradient(180deg, #484851 0%, #35353c 100%);
-  border-color: #52525c;
-  color: #fafafa;
+  background: linear-gradient(
+    180deg,
+    var(--primary-hover-start) 0%,
+    var(--primary-hover-end) 100%
+  );
+  border-color: var(--primary-hover-border);
+  color: var(--primary-text-hover);
 }
 
 .primary:active {
-  background: linear-gradient(180deg, #2a2a30 0%, #222228 100%);
+  background: linear-gradient(
+    180deg,
+    var(--primary-active-start) 0%,
+    var(--primary-active-end) 100%
+  );
   color: var(--accent-pressed);
 }
 
