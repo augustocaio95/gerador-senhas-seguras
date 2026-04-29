@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Senhas Seguras</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>Gerador de Senhas</h1>
+        <p class="subtitle">Crie senhas fortes de forma simples.</p>
+
+        <label class="field">
+          <span>Tamanho da senha: <strong id="lengthValue">16</strong></span>
+          <input type="range" id="length" min="4" max="64" value="16" />
+        </label>
+
+        <div class="options">
+          <label><input type="checkbox" id="uppercase" checked /> Maiusculas (A-Z)</label>
+          <label><input type="checkbox" id="lowercase" checked /> Minusculas (a-z)</label>
+          <label><input type="checkbox" id="numbers" checked /> Numeros (0-9)</label>
+          <label><input type="checkbox" id="symbols" checked /> Simbolos (!@#$...)</label>
+        </div>
+
+        <div class="result">
+          <input id="passwordOutput" type="text" readonly placeholder="Sua senha aparece aqui" />
+          <button id="copyBtn" type="button">Copiar</button>
+        </div>
+
+        <button id="generateBtn" class="primary" type="button">Gerar senha</button>
+        <p id="status" class="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

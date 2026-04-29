@@ -1,0 +1,13 @@
+{
+  "name": "gerador-senhas-seguras",
+  "version": "1.0.0",
+  "description": "Gerador de senhas seguras com interface web simples.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:watch": "node --test --watch",
+    "test:robot": "robot tests/robot/password_generator.robot"
+  },
+  "keywords": ["password", "security", "web"],
+  "license": "MIT"
+}

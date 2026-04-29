@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.autoSave": "onFocusChange",
+  "files.eol": "\n",
+  "liveServer.settings.port": 5500,
+  "[robotframework]": {
+    "editor.tabSize": 4
+  },
+  "python.terminal.activateEnvironment": true
+}
