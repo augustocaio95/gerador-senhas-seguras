@@ -16,43 +16,48 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <button
-      type="button"
-      id="themeToggle"
-      class="theme-toggle"
-      aria-pressed="true"
-      title="Alternar tema claro ou escuro"
-    >
-      <span class="theme-toggle__label" aria-hidden="true">Claro</span>
-      <span class="visually-hidden">Alternar para tema claro</span>
-    </button>
     <main class="container">
-      <section class="card">
-        <header class="card-header">
-          <h1>Gerador de Senhas</h1>
-          <p class="subtitle">Crie senhas fortes de forma simples.</p>
-        </header>
+      <div class="main-stack">
+        <section class="card">
+          <header class="card-header">
+            <h1>Gerador de Senhas</h1>
+            <p class="subtitle">Crie senhas fortes de forma simples.</p>
+          </header>
 
-        <label class="field">
-          <span>Tamanho da senha: <strong id="lengthValue">16</strong></span>
-          <input type="range" id="length" min="4" max="64" value="16" />
-        </label>
+          <label class="field">
+            <span>Tamanho da senha: <strong id="lengthValue">8</strong></span>
+            <input type="range" id="length" min="4" max="12" value="8" />
+          </label>
 
-        <div class="options">
-          <label><input type="checkbox" id="uppercase" checked /> Maiusculas (A-Z)</label>
-          <label><input type="checkbox" id="lowercase" checked /> Minusculas (a-z)</label>
-          <label><input type="checkbox" id="numbers" checked /> Numeros (0-9)</label>
-          <label><input type="checkbox" id="symbols" checked /> Simbolos (!@#$...)</label>
+          <div class="options">
+            <label><input type="checkbox" id="uppercase" checked /> Maiusculas (A-Z)</label>
+            <label><input type="checkbox" id="lowercase" checked /> Minusculas (a-z)</label>
+            <label><input type="checkbox" id="numbers" checked /> Numeros (0-9)</label>
+            <label><input type="checkbox" id="symbols" checked /> Simbolos (!@#$...)</label>
+          </div>
+
+          <div class="result">
+            <input id="passwordOutput" type="text" readonly placeholder="Sua senha aparece aqui" />
+            <button id="copyBtn" type="button">Copiar</button>
+          </div>
+
+          <button id="generateBtn" class="primary" type="button">Gerar senha</button>
+          <p id="status" class="status" aria-live="polite"></p>
+        </section>
+
+        <div class="theme-toggle-wrap">
+          <button
+            type="button"
+            id="themeToggle"
+            class="theme-toggle"
+            aria-pressed="true"
+            title="Alternar tema claro ou escuro"
+          >
+            <span class="theme-toggle__label" aria-hidden="true">Claro</span>
+            <span class="visually-hidden">Alternar para tema claro</span>
+          </button>
         </div>
-
-        <div class="result">
-          <input id="passwordOutput" type="text" readonly placeholder="Sua senha aparece aqui" />
-          <button id="copyBtn" type="button">Copiar</button>
-        </div>
-
-        <button id="generateBtn" class="primary" type="button">Gerar senha</button>
-        <p id="status" class="status" aria-live="polite"></p>
-      </section>
+      </div>
     </main>
 
     <script type="module" src="./src/app.js"></script>

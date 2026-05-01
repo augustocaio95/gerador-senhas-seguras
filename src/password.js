@@ -1,3 +1,6 @@
+export const PASSWORD_LENGTH_MIN = 4;
+export const PASSWORD_LENGTH_MAX = 12;
+
 const CHARSETS = {
   uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -9,6 +12,7 @@ function getCrypto() {
   if (typeof crypto !== "undefined" && crypto.getRandomValues) {
     return crypto;
   }
+
   throw new Error("Secure random generator unavailable.");
 }
 
@@ -31,7 +35,7 @@ function pickRandomChar(source) {
 }
 
 export function generatePassword(options = {}) {
-  const length = Number(options.length ?? 16);
+  const length = Number(options.length ?? 8);
   const allowedGroups = [
     options.uppercase !== false ? CHARSETS.uppercase : "",
     options.lowercase !== false ? CHARSETS.lowercase : "",
@@ -39,8 +43,14 @@ export function generatePassword(options = {}) {
     options.symbols !== false ? CHARSETS.symbols : "",
   ].filter(Boolean);
 
-  if (!Number.isInteger(length) || length < 4 || length > 64) {
-    throw new Error("Length must be an integer between 4 and 64.");
+  if (
+    !Number.isInteger(length) ||
+    length < PASSWORD_LENGTH_MIN ||
+    length > PASSWORD_LENGTH_MAX
+  ) {
+    throw new Error(
+      `Length must be an integer between ${PASSWORD_LENGTH_MIN} and ${PASSWORD_LENGTH_MAX}.`,
+    );
   }
 
   if (allowedGroups.length === 0) {
