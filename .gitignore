@@ -1,8 +1,7 @@
 node_modules/
 coverage/
 .DS_Store
-__pycache__/
-*.pyc
-output.xml
-log.html
-report.html
+
+# Saidas geradas pelo Robot Framework (mantem a pasta results/ no Git)
+results/*
+!results/.gitkeep

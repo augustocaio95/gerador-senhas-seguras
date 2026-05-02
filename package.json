@@ -6,8 +6,12 @@
   "scripts": {
     "test": "node --test",
     "test:watch": "node --test --watch",
-    "test:robot": "robot tests/robot/password_generator.robot"
+    "test:robot": "robot --outputdir results tests/robot/password_generator.robot"
   },
-  "keywords": ["password", "security", "web"],
+  "keywords": [
+    "password",
+    "security",
+    "web"
+  ],
   "license": "MIT"
 }
