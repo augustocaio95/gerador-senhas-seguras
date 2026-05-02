@@ -8,6 +8,7 @@ Inclui **tema claro e escuro** (dois botões), com preferência salva no navegad
 
 ## Sumário
 
+- [Uso de Inteligência Artificial no desenvolvimento](#uso-de-inteligência-artificial-no-desenvolvimento)
 - [Requisitos](#requisitos)
 - [Obter o projeto](#obter-o-projeto)
 - [Como executar a aplicação](#como-executar-a-aplicação)
@@ -16,6 +17,47 @@ Inclui **tema claro e escuro** (dois botões), com preferência salva no navegad
 - [Relatórios do Robot Framework](#relatórios-do-robot-framework)
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Solução de problemas](#solução-de-problemas)
+
+---
+
+## Uso de Inteligência Artificial no desenvolvimento
+
+Este projeto foi conduzido com apoio ativo de IA para acelerar a implementação, testar hipóteses rapidamente e melhorar a qualidade técnica sem perder controle humano das decisões finais.
+
+### Importância da IA neste projeto
+
+- A IA ajudou a transformar requisitos em entregas incrementais (UI, lógica, testes e documentação).
+- O processo ficou mais iterativo: cada melhoria foi implementada, validada e registrada em commits menores.
+- A produtividade aumentou ao reduzir tempo de pesquisa e boilerplate, mantendo foco em decisões de produto.
+
+### Desafios superados com apoio de IA
+
+- Alinhar comportamento real com requisitos que mudaram durante o desenvolvimento (ex.: limite de tamanho da senha e padrão de tema).
+- Evoluir o layout sem quebrar funcionalidades existentes (tema claro/escuro, posição e forma dos botões).
+- Integrar e organizar duas camadas de teste (Node + Robot Framework) com saída consistente em `results/`.
+- Melhorar a execução para terceiros, reduzindo erros comuns de ambiente e de comandos.
+
+### Ganhos de produtividade observados
+
+- Entrega mais rápida de funcionalidades visuais e de lógica com validação contínua.
+- Menor retrabalho ao documentar e testar logo após cada alteração.
+- Comunicação técnica mais clara para versionamento (mensagens de commit e escopo de mudanças).
+
+### Decisões arquiteturais e de design
+
+- **Arquitetura simples e separada:** `src/password.js` para regra de negócio e `src/app.js` para interface.
+- **Segurança na geração:** uso de `crypto.getRandomValues` em vez de `Math.random`.
+- **Limites explícitos:** tamanho mínimo/máximo centralizado em constantes (`PASSWORD_LENGTH_MIN` e `PASSWORD_LENGTH_MAX`).
+- **Tematização por estado:** `data-theme` no `html` + CSS por variáveis para suportar claro/escuro de forma escalável.
+- **Persistência local:** preferência de tema salva em `localStorage` para melhor experiência do usuário.
+- **Testabilidade:** testes unitários para regras e testes Robot para validação de cenários de uso.
+
+### Lições aprendidas
+
+- Definir bem regras de negócio no início evita ajustes em vários pontos depois.
+- Uma estrutura modular simples facilita mudanças frequentes sem regressões.
+- Documentação de execução é tão importante quanto código para quem vai avaliar ou reutilizar o projeto.
+- IA acelera muito, mas revisão humana é essencial para garantir aderência aos requisitos e qualidade final.
 
 ---
 
@@ -39,7 +81,7 @@ cd gerador-senhas-seguras
 ```
 
 
-----
+---
 
 ## Como executar a aplicação
 
