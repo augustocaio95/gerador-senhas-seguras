@@ -194,5 +194,5 @@ A pasta `results/` existe no repositório (com `.gitkeep`); os relatórios gerad
 ---
 
 ## Licença
-
+ 
 MIT
