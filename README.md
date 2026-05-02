@@ -34,11 +34,10 @@ Não é obrigório instalar dependências Node com `npm install`: este projeto *
 ## Obter o projeto
 
 ```bash
-git clone <url-do-seu-repositorio>
+git clone https://github.com/augustocaio95/gerador-senhas-seguras.git
 cd gerador-senhas-seguras
 ```
 
-(Ajuste o nome da pasta conforme o seu repositório.)
 
 ---
 
@@ -48,7 +47,7 @@ O projeto usa **JavaScript em modo módulo** (`import`/`export`). Em alguns nave
 
 Sempre execute os comandos **na pasta raiz do projeto** (onde está o `index.html`).
 
-### Opção A — VS Code / Cursor: Live Server (recomendado para quem já usa o editor)
+### Opção A — VS Code / Cursor: Live Server
 
 1. Instale a extensão **Live Server** (Ritwick Dey).
 2. Abra a pasta do projeto no editor.
