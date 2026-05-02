@@ -39,7 +39,7 @@ cd gerador-senhas-seguras
 ```
 
 
----
+----
 
 ## Como executar a aplicação
 
