@@ -12,7 +12,8 @@ const outputInput = document.getElementById("passwordOutput");
 const statusEl = document.getElementById("status");
 const generateBtn = document.getElementById("generateBtn");
 const copyBtn = document.getElementById("copyBtn");
-const themeToggle = document.getElementById("themeToggle");
+const themeLightBtn = document.getElementById("themeLight");
+const themeDarkBtn = document.getElementById("themeDark");
 
 function getOptions() {
   return {
@@ -54,35 +55,26 @@ async function copyPassword() {
 }
 
 function getTheme() {
-  return document.documentElement.getAttribute("data-theme") === "light"
-    ? "light"
-    : "dark";
+  return document.documentElement.getAttribute("data-theme") === "dark"
+    ? "dark"
+    : "light";
 }
 
 function setTheme(theme) {
-  const next = theme === "light" ? "light" : "dark";
+  const next = theme === "dark" ? "dark" : "light";
   document.documentElement.setAttribute("data-theme", next);
   localStorage.setItem(THEME_STORAGE_KEY, next);
-  updateThemeToggleUi();
+  updateThemeButtonsUi();
 }
 
-function updateThemeToggleUi() {
-  if (!themeToggle) return;
+function updateThemeButtonsUi() {
   const isDark = getTheme() === "dark";
-  themeToggle.setAttribute("aria-pressed", isDark ? "true" : "false");
-  const label = themeToggle.querySelector(".theme-toggle__label");
-  const hidden = themeToggle.querySelector(".visually-hidden");
-  if (label) {
-    label.textContent = isDark ? "Claro" : "Escuro";
+  if (themeLightBtn && themeDarkBtn) {
+    themeLightBtn.classList.toggle("theme-btn--active", !isDark);
+    themeDarkBtn.classList.toggle("theme-btn--active", isDark);
+    themeLightBtn.setAttribute("aria-pressed", isDark ? "false" : "true");
+    themeDarkBtn.setAttribute("aria-pressed", isDark ? "true" : "false");
   }
-  if (hidden) {
-    hidden.textContent = isDark ? "Ativar tema claro" : "Ativar tema escuro";
-  }
-  themeToggle.title = isDark ? "Usar tema claro" : "Usar tema escuro";
-}
-
-function toggleTheme() {
-  setTheme(getTheme() === "dark" ? "light" : "dark");
 }
 
 lengthInput.addEventListener("input", () => {
@@ -91,7 +83,8 @@ lengthInput.addEventListener("input", () => {
 
 generateBtn.addEventListener("click", generateAndRender);
 copyBtn.addEventListener("click", copyPassword);
-themeToggle?.addEventListener("click", toggleTheme);
+themeLightBtn?.addEventListener("click", () => setTheme("light"));
+themeDarkBtn?.addEventListener("click", () => setTheme("dark"));
 
-updateThemeToggleUi();
+updateThemeButtonsUi();
 generateAndRender();

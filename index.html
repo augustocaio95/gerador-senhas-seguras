@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <script>
@@ -46,18 +46,32 @@
         </section>
 
         <div class="theme-toggle-wrap">
-          <div class="theme-toggle-row">
-            <span class="theme-toggle-hint">Selecione o tema da página</span>
-            <button
-              type="button"
-              id="themeToggle"
-              class="theme-toggle"
-              aria-pressed="true"
-              title="Alternar tema claro ou escuro"
+          <div class="theme-toggle-column">
+            <p class="theme-toggle-hint">Selecione o tema da página</p>
+            <div
+              class="theme-toggle-buttons"
+              role="group"
+              aria-label="Selecione o tema da página"
             >
-              <span class="theme-toggle__label" aria-hidden="true">Claro</span>
-              <span class="visually-hidden">Alternar para tema claro</span>
-            </button>
+              <button
+                type="button"
+                id="themeLight"
+                class="theme-btn theme-btn--active"
+                aria-pressed="true"
+                title="Tema claro"
+              >
+                Claro
+              </button>
+              <button
+                type="button"
+                id="themeDark"
+                class="theme-btn"
+                aria-pressed="false"
+                title="Tema escuro"
+              >
+                Escuro
+              </button>
+            </div>
           </div>
         </div>
       </div>
